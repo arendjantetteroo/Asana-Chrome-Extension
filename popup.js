@@ -93,6 +93,19 @@ var showAddUi = function(url, title, selected_text, options) {
       $("#workspace").change(onWorkspaceChanged);
     });
   });
+
+  Asana.ServerModel.me(function(user) {
+    // Just to cache result.
+    Asana.ServerModel.projects(function(projects) {
+      $("#project").html("");
+      projects.forEach(function(project) {
+        $("#project").append(
+          "<option value='" + project.id + "'>" + project.name + "</option>");
+        });
+      $("#project").val(options.default_project_id);
+    });
+  });
+
 };
 
 // Enable/disable the add button.
@@ -155,6 +168,10 @@ var readWorkspaceId = function() {
   return $("#workspace").val();
 };
 
+var readProjectId = function() {
+  return $("#project").val();
+};
+
 var createTask = function() {
   console.info("Creating task");
   hideError();
@@ -167,8 +184,17 @@ var createTask = function() {
         assignee: readAssignee()
       },
       function(task) {
-        setAddWorking(false);
-        showSuccess(task);
+        Asana.ServerModel.addProject(
+          task.id,
+          readProjectId(),
+          function(response) {
+            setAddWorking(false);
+            showSuccess(task);
+          },
+          function(response) {
+            setAddWorking(false);
+            showError(response.errors[0].message);
+          });
       },
       function(response) {
         setAddWorking(false);

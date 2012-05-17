@@ -29,7 +29,8 @@ Asana.Options = {
   defaultOptions: function() {
     return {
       asana_host_port: "app.asana.com",
-      default_workspace_id: 0
+      default_workspace_id: 0,
+      default_project_id: 0
     };
   },
 

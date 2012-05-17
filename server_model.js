@@ -74,6 +74,20 @@ Asana.ServerModel = {
   },
 
   /**
+   * Requests the set of workspaces the logged-in user is in.
+   *
+   * @param callback {Function(workspaces)} Callback on success.
+   *     workspaces {dict[]}
+   */
+  projects: function(callback, errback) {
+    var self = this;
+    Asana.ApiBridge.request("GET", "/projects", {},
+        function(response) {
+          self._makeCallback(response, callback, errback);
+        });
+  },
+
+  /**
    * Requests the set of users in a workspace.
    *
    * @param callback {Function(users)} Callback on success.
@@ -123,6 +137,17 @@ Asana.ServerModel = {
         function(response) {
           self._makeCallback(response, callback, errback);
         });
+  },
+
+  addProject: function(task_id, project_id, callback, errback) {
+    var self = this;
+    Asana.ApiBridge.request(
+      "POST",
+      "/tasks/" + task_id + "/addProject",
+      { project: project_id },
+      function(response) {
+        self._makeCallback(response, callback, errback);
+      });
   },
 
   _makeCallback: function(response, callback, errback) {
