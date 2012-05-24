@@ -52,6 +52,18 @@
             <select id="assignee"><option>Loading...</option></select>
           </td>
         </tr>
+        
+        <tr>
+          <td class="field-name">Status:</td>
+          <td class="field-value">
+            <select id="status">
+            	<option value="inbox">Inbox</option>
+            	<option value="later">Later</option>
+            	<option value="today">Today</option>
+            	<option value="upcoming" selected="selected">Upcoming</option>
+            </select>
+          </td>
+        </tr>
 
         <tr>
           <td class="field-name"></td>
@@ -245,7 +257,8 @@
         {
           name: $("#name").val(),
           notes: $("#notes").val(),
-          assignee: readAssignee()
+          assignee: readAssignee(), 
+          assignee_status: $("#status").val()
         },
         function(task) {
           setAddWorking(false);
