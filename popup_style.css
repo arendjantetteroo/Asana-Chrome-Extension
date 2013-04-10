@@ -2,7 +2,6 @@
 body {
   overflow: hidden;
   width: 410px;
-  height: 310px;  /* keep this correct for the window-based (non-button) version */
   padding: 0px;
   margin: 0px;
   margin-top: 1px;
