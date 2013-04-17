@@ -48,6 +48,7 @@ Asana.Options = {
       return options;
     } else {
       options = JSON.parse(options_json);
+      //console.log(options);
       return options;
     }
   },
@@ -59,6 +60,7 @@ Asana.Options = {
    * @param options {dict} The user's options.
    */
   saveOptions: function(options) {
+    //console.log(options);
     localStorage.options = JSON.stringify(options);
   },
 

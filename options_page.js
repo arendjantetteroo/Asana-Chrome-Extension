@@ -27,9 +27,45 @@ var fillDomainsInBackground = function(opt_options) {
       $("#domains_group").find("input")[0].checked = true;
     }
     $("#domains_group").find("input").change(onChange);
+    $("#domains_group").find("input").change(fillProjectsInBackground);
+    fillProjectsInBackground();
   }, function(error_response) {
     $("#domains_group").html(
         '<div>Error loading workspaces. Verify the following:<ul>' +
+            '<li>Asana Host is configured correctly.</li>' +
+            '<li>You are <a target="_blank" href="' +
+            Asana.Options.loginUrl() +
+            '">logged in</a>.</li>' +
+            '<li>You have access to the Asana API.</li></ul>');
+  });
+};
+
+var fillProjectsInBackground = function(opt_options) {
+  var options = opt_options || Asana.Options.loadOptions();
+  options.default_domain_id = $("#domains_group input:checked").attr("key");
+  Asana.ServerModel.projectsInWorkspace(options.default_domain_id, function(projects) {
+    $("#projects_group").html("");
+    projects.forEach(function(project) {
+      projectinput = '<label><input name="default_project_id" type="radio" id="default_project_id-' +
+              project.id + '" key="' + project.id + '"';
+     if (options.default_project_id == project.id) {
+          // Check the default project
+         projectinput += 'checked=checked';
+      }
+      projectinput += '/>' +project.name + '</label><br/>';
+      $("#projects_group").append(projectinput);
+    });
+    projectinput = '<label><input name="default_project_id" type="radio" id="default_project_id-0" key="0"';
+    if (options.default_project_id == 0) {
+          // Check the default project
+         projectinput += 'checked=checked';
+    }
+    projectinput += '/>---Don\'t assign a Project---</label><br/>';
+    $("#projects_group").append(projectinput);
+    $("#projects_group").find("input").change(onChange);
+  }, function(error_response) {
+    $("#projects_group").html(
+        '<div>Error loading projects. Verify the following:<ul>' +
             '<li>Asana Host is configured correctly.</li>' +
             '<li>You are <a target="_blank" href="' +
             Asana.Options.loginUrl() +
@@ -64,11 +100,15 @@ var resetOptions = function() {
 var saveOptions = function() {
   var asana_host_port = $("#asana_host_port_input").val();
   var default_domain_input = $("#domains_group input:checked");
+  var default_project_input = $("#projects_group input:checked");
   Asana.Options.saveOptions({
     asana_host_port: asana_host_port,
     default_domain_id: default_domain_input
         ? default_domain_input.attr("key")
-        : 0
+        : 0,
+    default_project_id: default_project_input
+        ? default_project_input.attr("key")
+        : 0        
   });
   setSaveEnabled(false);
   $("#status").html("Options saved.");

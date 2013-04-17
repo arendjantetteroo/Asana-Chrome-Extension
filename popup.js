@@ -137,7 +137,7 @@ var onWorkspaceChanged = function() {
       $("#project").html("");
       Asana.ServerModel.options(function(options) {
         // Add a no project option
-        option = "<option value='0'>No project</option>";
+        option = "<option value='0'>---Don\'t assign a Project---</option>";
         $("#project").append(option);
 
         // Add all available projects in this workspace
@@ -145,7 +145,7 @@ var onWorkspaceChanged = function() {
             option = "<option value='" + project.id + "'";
             if (options.default_project_id == project.id) {
               // The default project is in this workspace, check it
-              option += 'checked=checked';
+              option += 'selected=selected';
             }
             option += ">" + project.name + "</option>";
             $("#project").append(option);
