@@ -88,7 +88,7 @@ var showAddUi = function(url, title, selected_text, options) {
         $("#workspace").append(
             "<option value='" + workspace.id + "'>" + workspace.name + "</option>");
       });
-      $("#workspace").val(options.default_workspace_id);
+      $("#workspace").val(options.default_domain_id);
       onWorkspaceChanged();
       $("#workspace").change(onWorkspaceChanged);
     });
