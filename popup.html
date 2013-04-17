@@ -59,6 +59,18 @@
             <select id="assignee"><option>Loading...</option></select>
           </td>
         </tr>
+        
+        <tr>
+          <td class="field-name">Status:</td>
+          <td class="field-value">
+            <select id="status">
+            	<option value="inbox">Inbox</option>
+            	<option value="later">Later</option>
+            	<option value="today">Today</option>
+            	<option value="upcoming" selected="selected">Upcoming</option>
+            </select>
+          </td>
+        </tr>
 
         <tr>
           <td class="field-name"></td>
@@ -87,5 +99,4 @@
 
 <!-- Adds event handlers to elements, so we include at the end -->
 <script type="text/javascript" src="popup.js"></script>
-
 </html>

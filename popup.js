@@ -181,7 +181,8 @@ var createTask = function() {
       {
         name: $("#name").val(),
         notes: $("#notes").val(),
-        assignee: readAssignee()
+        assignee: readAssignee(),
+        assignee_status: $("#status").val()
       },
       function(task) {
         Asana.ServerModel.addProject(

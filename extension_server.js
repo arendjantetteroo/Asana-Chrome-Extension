@@ -23,7 +23,7 @@ Asana.ExtensionServer = {
         var popup = window.open(
             chrome.extension.getURL('popup.html') + '?external=true',
             "asana_quick_add",
-            "dependent=1,resizable=0,location=0,menubar=0,status=0,toolbar=0,width=410,height=310");
+            "dependent=1,resizable=0,location=0,menubar=0,status=0,toolbar=0,width=410,height=410");
         popup.quick_add_request = request;
       }
     });
