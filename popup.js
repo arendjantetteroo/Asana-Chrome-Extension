@@ -93,19 +93,6 @@ var showAddUi = function(url, title, selected_text, options) {
       $("#workspace").change(onWorkspaceChanged);
     });
   });
-
-  Asana.ServerModel.me(function(user) {
-    // Just to cache result.
-    Asana.ServerModel.projects(function(projects) {
-      $("#project").html("");
-      projects.forEach(function(project) {
-        $("#project").append(
-          "<option value='" + project.id + "'>" + project.name + "</option>");
-        });
-      $("#project").val(options.default_project_id);
-    });
-  });
-
 };
 
 // Enable/disable the add button.
@@ -144,6 +131,14 @@ var onWorkspaceChanged = function() {
   var workspace_id = readWorkspaceId();
   $("#assignee").html("<option>Loading...</option>");
   setAddEnabled(false);
+  Asana.ServerModel.projectsInWorkspace(workspace_id, function(projects) {
+      $("#project").html("");
+      projects.forEach(function(project) {
+        $("#project").append(
+          "<option value='" + project.id + "'>" + project.name + "</option>");
+        });
+      $("#project").val(options.default_project_id);
+  });
   Asana.ServerModel.users(workspace_id, function(users) {
     $("#assignee").html("");
     users = users.sort(function(a, b) {

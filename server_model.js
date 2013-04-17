@@ -74,14 +74,28 @@ Asana.ServerModel = {
   },
 
   /**
-   * Requests the set of workspaces the logged-in user is in.
+   * Requests the set of projects the logged-in user has.
    *
-   * @param callback {Function(workspaces)} Callback on success.
-   *     workspaces {dict[]}
+   * @param callback {Function(projects)} Callback on success.
+   *     projects {dict[]}
    */
   projects: function(callback, errback) {
     var self = this;
     Asana.ApiBridge.request("GET", "/projects", {},
+        function(response) {
+          self._makeCallback(response, callback, errback);
+        });
+  },
+
+  /**
+   * Requests the set of projects in the selected workspace the logged-in user has.
+   *
+   * @param callback {Function(projects)} Callback on success.
+   *     projects {dict[]}
+   */
+  projectsInWorkspace: function(workspace_id, callback, errback) {
+    var self = this;
+    Asana.ApiBridge.request("GET", "/workspaces/" + workspace_id + "/projects", {},
         function(response) {
           self._makeCallback(response, callback, errback);
         });
