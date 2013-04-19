@@ -126,11 +126,13 @@ var setAddWorking = function(working) {
       working ? "Adding..." : "Add to Asana");
 };
 
-// When the user changes the workspace, update the list of users.
+// When the user changes the workspace, update the list of users and projects.
 var onWorkspaceChanged = function() {
   var workspace_id = readWorkspaceId();
   $("#assignee").html("<option>Loading...</option>");
   setAddEnabled(false);
+
+  // Get the available projects in the selected workspace
   Asana.ServerModel.projectsInWorkspace(workspace_id, function(projects) {
       $("#project").html("");
       Asana.ServerModel.options(function(options) {
@@ -150,6 +152,8 @@ var onWorkspaceChanged = function() {
           });          
       });
   });
+
+  // Get the available users in the selected workspace
   Asana.ServerModel.users(workspace_id, function(users) {
     $("#assignee").html("");
     users = users.sort(function(a, b) {
