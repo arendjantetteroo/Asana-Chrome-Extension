@@ -133,12 +133,15 @@ var onWorkspaceChanged = function() {
   setAddEnabled(false);
   Asana.ServerModel.projectsInWorkspace(workspace_id, function(projects) {
       $("#project").html("");
-      projects.forEach(function(project) {
-        $("#project").append(
-          "<option value='" + project.id + "'>" + project.name + "</option>");
-        });
       Asana.ServerModel.options(function(options) {
-        $("#project").val(options.default_project_id);
+        projects.forEach(function(project) {
+            option = "<option value='" + project.id + "'";
+            if (options.default_project_id == project.id) {
+              option += 'checked=checked';
+            }
+            option += ">" + project.name + "</option>";
+            $("#project").append(option);
+          });          
       });
   });
   Asana.ServerModel.users(workspace_id, function(users) {
