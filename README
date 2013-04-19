@@ -1,4 +1,29 @@
-A new version of the asana chrome extension with changes by others merged in. 
+A new version of the Asana Chrome extension with changes by others merged in and some bugfixes. 
+
+Features
+========
+  * Ability to add to a project as well (by Ben Neville https://github.com/bbn)
+  * Add task status (inbox, today, upcoming, later) (by Jon Lumpkin https://github.com/jmlumpkin)
+  * Inline script update (by Marica Odagaki https://github.com/Ento)
+  * Project below workspace (by Lilia Markham https://github.com/liliakai)
+  * Only show projects for the selected workspace
+  * Update to latest jquery 2.0 and javascript bugfixes
+
+To install:
+
+  1. Download the code, e.g. `git clone git://github.com/arendjantetteroo/Asana-Chrome-Extension.git`
+  2. Navigate chrome to `chrome://extensions`
+  3. Check the `Developer mode` toggle
+  4. Click on `Load Unpacked Extension...`
+  5. Select the folder containing the extension
+
+Bug or new feature?
+===================
+Open a pull request or issue and I'll see if I can integrate it, so we get the best version available.
+
+Original Readme from Asana
+==========================
+See : https://github.com/Asana/Chrome-Extension-Example
 
 This is a free, open-source, sample application demonstrating use of the
 Asana API. It takes the form of a Chrome Extension that, when installed,
@@ -31,10 +56,3 @@ Files of special interest:
     Source for the popup window, contains the top-level logic which drives
     most of the user-facing functionality.
 
-To install:
-
-  1. Download the code, e.g. `git clone git://github.com/Asana/Chrome-Extension-Example.git`
-  2. Navigate chrome to `chrome://extensions`
-  3. Check the `Developer mode` toggle
-  4. Click on `Load Unpacked Extension...`
-  5. Select the folder containing the extension
