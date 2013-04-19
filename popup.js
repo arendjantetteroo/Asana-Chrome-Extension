@@ -137,7 +137,9 @@ var onWorkspaceChanged = function() {
         $("#project").append(
           "<option value='" + project.id + "'>" + project.name + "</option>");
         });
-      $("#project").val(options.default_project_id);
+      Asana.ServerModel.options(function(options) {
+        $("#project").val(options.default_project_id);
+      });
   });
   Asana.ServerModel.users(workspace_id, function(users) {
     $("#assignee").html("");
