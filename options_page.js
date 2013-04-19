@@ -22,7 +22,7 @@ var fillDomainsInBackground = function(opt_options) {
     });
     var default_domain_element = $("#default_domain_id-" + options.default_domain_id);
     if (default_domain_element[0]) {
-      default_domain_element.attr("checked", "checked");
+      default_domain_element.prop("checked", "checked");
     } else {
       $("#domains_group").find("input")[0].checked = true;
     }
@@ -63,7 +63,7 @@ var resetOptions = function() {
 
 var saveOptions = function() {
   var asana_host_port = $("#asana_host_port_input").val();
-  var default_domain_input = $("input[@name='default_domain_id']:checked");
+  var default_domain_input = $("#domains_group input:checked");
   Asana.Options.saveOptions({
     asana_host_port: asana_host_port,
     default_domain_id: default_domain_input
