@@ -185,17 +185,24 @@ var createTask = function() {
         assignee_status: $("#status").val()
       },
       function(task) {
-        Asana.ServerModel.addProject(
-          task.id,
-          readProjectId(),
-          function(response) {
-            setAddWorking(false);
-            showSuccess(task);
-          },
-          function(response) {
-            setAddWorking(false);
-            showError(response.errors[0].message);
-          });
+        projectId = readProjectId();
+        if(projectId > 0) {
+          // Only do an addProject if we have a project
+          Asana.ServerModel.addProject(
+            task.id,
+            readProjectId(),
+            function(response) {
+              setAddWorking(false);
+              showSuccess(task);
+            },
+            function(response) {
+              setAddWorking(false);
+              showError(response.errors[0].message);
+            });
+        } else {
+          setAddWorking(false);
+          showSuccess(task);
+        }
       },
       function(response) {
         setAddWorking(false);
