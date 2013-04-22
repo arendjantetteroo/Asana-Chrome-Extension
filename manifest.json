@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Asana Extension for Chrome",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Integrates Asana with your browsing experience.",
   "icons": {
     "128": "icon128.png"

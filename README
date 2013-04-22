@@ -1,13 +1,17 @@
-A new version of the Asana Chrome extension with changes by others merged in and some bugfixes. 
+A new version of the Asana Chrome extension with changes by others merged in, and some bugfixes. 
 
 Features
 ========
+  * Only show projects for the selected workspace
+  * Select a default project for the selected workspace on options page
+  * Allow adding without a project
+  * Update to latest jquery 2.0 and javascript bugfixes  
   * Ability to add to a project as well (by Ben Neville https://github.com/bbn)
   * Add task status (inbox, today, upcoming, later) (by Jon Lumpkin https://github.com/jmlumpkin)
   * Inline script update (by Marica Odagaki https://github.com/Ento)
   * Project below workspace (by Lilia Markham https://github.com/liliakai)
-  * Only show projects for the selected workspace
-  * Update to latest jquery 2.0 and javascript bugfixes
+
+See the changelog for more information
 
 To install:
 
