@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Asana-chrome-extension : An updated and improved Asana Chrome Extension using the Asana API" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Asana-chrome-extension</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/arendjantetteroo/Asana-Chrome-Extension">View on GitHub</a>
+
+          <h1 id="project_title">Asana-chrome-extension</h1>
+          <h2 id="project_tagline">An updated and improved Asana Chrome Extension using the Asana API</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/arendjantetteroo/Asana-Chrome-Extension/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/arendjantetteroo/Asana-Chrome-Extension/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>A new version of the Asana Chrome extension with changes by others merged in, and some bugfixes. </p>
+
+<h1>Features</h1>
+
+<ul>
+<li>Only show projects for the selected workspace</li>
+<li>Select a default project for the selected workspace on options page</li>
+<li>Allow adding without a project</li>
+<li>Update to latest jquery 2.0 and javascript bugfixes<br>
+</li>
+<li>Ability to add to a project as well (by Ben Neville <a href="https://github.com/bbn">https://github.com/bbn</a>)</li>
+<li>Add task status (inbox, today, upcoming, later) (by Jon Lumpkin <a href="https://github.com/jmlumpkin">https://github.com/jmlumpkin</a>)</li>
+<li>Inline script update (by Marica Odagaki <a href="https://github.com/Ento">https://github.com/Ento</a>)</li>
+<li>Project below workspace (by Lilia Markham <a href="https://github.com/liliakai">https://github.com/liliakai</a>)</li>
+</ul><p>See the changelog for more information</p>
+
+<p>To install:</p>
+
+<ol>
+<li>Download the code by clicking on the zip or tar.gz links above
+or do a <code>git clone git://github.com/arendjantetteroo/Asana-Chrome-Extension.git</code> if you want to contribute</li>
+<li>Navigate chrome to <code>chrome://extensions</code>
+</li>
+<li>Check the <code>Developer mode</code> toggle</li>
+<li>Click on <code>Load Unpacked Extension...</code>
+</li>
+<li>Select the folder containing the extension</li>
+</ol><h1>Bug or new feature?</h1>
+
+<p>Open a pull request or issue and I'll see if I can integrate it, so we get the best version available.</p>
+
+<h1>Original Readme from Asana</h1>
+
+<p>See : <a href="https://github.com/Asana/Chrome-Extension-Example">https://github.com/Asana/Chrome-Extension-Example</a></p>
+
+<p>This is a free, open-source, sample application demonstrating use of the
+Asana API. It takes the form of a Chrome Extension that, when installed,
+integrates Asana into your web experience in the following ways:</p>
+
+<ul>
+<li><p>Creates a button in your button-bar which, when clicked, pops up a
+QuickAdd window to create a new task associated with the current web page.
+It will populate the task name with the page title by default, and
+put the URL in the notes, along with any text you may have selected
+when you pressed the button.</p></li>
+<li><p>Installs the special Asana TAB+Q keyboard shortcut. When this key combo
+is pressed from any web page, it brings up the same popup.
+This functionality will operate on any window opened after the extension
+is loaded.</p></li>
+</ul><p>See: <a href="http://developer.asana.com/">http://developer.asana.com/</a></p>
+
+<p>Files of special interest:</p>
+
+<p>api_bridge.js:
+    Handles generic communication with the API.</p>
+
+<p>server_model.js:
+    Wraps specifics of individual API calls to return objects to calling code.
+    This is not a real ORM, just the bare bones necessary to get a few
+    simple things done.</p>
+
+<p>popup.html
+    Source for the popup window, contains the top-level logic which drives
+    most of the user-facing functionality.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Asana-chrome-extension maintained by <a href="https://github.com/arendjantetteroo">arendjantetteroo</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
