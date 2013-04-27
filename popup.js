@@ -159,6 +159,8 @@ var onWorkspaceChanged = function() {
     users = users.sort(function(a, b) {
       return (a.name < b.name) ? -1 : ((a.name > b.name) ? 1 : 0);
     });
+    $("#assignee").append(
+          "<option value='0'>---Don\'t assign a User</option>");
     users.forEach(function(user) {
       $("#assignee").append(
           "<option value='" + user.id + "'>" + user.name + "</option>");
@@ -186,14 +188,23 @@ var createTask = function() {
   console.info("Creating task");
   hideError();
   setAddWorking(true);
+  
+  taskdata = {
+        name: $("#name").val(),
+        notes: $("#notes").val()
+  };
+  
+  // Check if we need to assign somebody, and if so, include the taskstatus as well
+  assignee = readAssignee();
+  if (assignee > 0) {
+    taskdata.assignee = assignee;
+    taskdata.assignee_status = $("#status").val();
+  }
+  
+  //Create the task
   Asana.ServerModel.createTask(
       readWorkspaceId(),
-      {
-        name: $("#name").val(),
-        notes: $("#notes").val(),
-        assignee: readAssignee(),
-        assignee_status: $("#status").val()
-      },
+      taskdata,
       function(task) {
         projectId = readProjectId();
         if(projectId > 0) {
